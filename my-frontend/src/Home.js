@@ -46,6 +46,11 @@ const Home = () => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleAddUrl();
+        }
+    };
 
     const handleSearch = async () => {
         if (urls.length > 0) {
@@ -59,7 +64,7 @@ const Home = () => {
     
             // After 5 seconds, change the status to "Scraping in progress..."
             const progressTimeout2 = setTimeout(() => {
-                setScrapingStatus("Scraping in progress..... Please wait.");
+                setScrapingStatus("Scraping in progress.....  Please wait.");
             }, 10000);
 
             try {
@@ -131,6 +136,9 @@ const Home = () => {
                         
                     }}
                     onChange={(e) => setUrl(e.target.value)}
+                    onKeyDown={handleKeyDown}  // Adding this line to listen for Enter key
+               
+                    //onChange={(e) => setUrl(e.target.value)}
                 />
 
                 <button className="addButton" onClick={handleAddUrl}>Add</button>
